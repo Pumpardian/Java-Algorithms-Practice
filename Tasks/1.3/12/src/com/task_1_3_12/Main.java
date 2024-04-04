@@ -1,8 +1,8 @@
-package com.task;
+package com.task_1_3_12;
 
 import java.util.logging.Logger;
 
-import com.task.datastructures.Stack;
+import com.task_1_3_12.datastructures.Stack;
 
 class Main
 {
