@@ -1,3 +1,5 @@
+package com.task.datastructures;
+
 import java.util.Iterator;
 
 public class Queue<Item>
@@ -65,6 +67,9 @@ public class Queue<Item>
 			return item;
 		}
 		
-		public void remove() {}
+		public void remove() 
+		{
+			throw new UnsupportedOperationException();
+		}
 	}
 }

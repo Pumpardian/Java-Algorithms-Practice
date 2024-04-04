@@ -1,3 +1,5 @@
+package com.task;
+
 import java.util.Iterator;
 
 public class ResizingArrayQueueOfStrings
@@ -64,6 +66,9 @@ public class ResizingArrayQueueOfStrings
 			return q[i++];
 		}
 		
-		public void remove() {}
+		public void remove() 
+		{
+			throw new UnsupportedOperationException();
+		}
 	}
 }

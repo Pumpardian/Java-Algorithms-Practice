@@ -1,3 +1,5 @@
+package com.task.datastructures;
+
 public class Node<T>
 {
 	private final T item;

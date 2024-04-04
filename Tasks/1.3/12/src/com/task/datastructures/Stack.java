@@ -1,3 +1,5 @@
+package com.task.datastructures;
+
 import java.util.Iterator;
 
 public class Stack<Item> implements Iterable<Item>
@@ -62,6 +64,9 @@ public class Stack<Item> implements Iterable<Item>
 			return item;
 		}
 		
-		public void remove() {}
+		public void remove() 
+		{
+			throw new UnsupportedOperationException();
+		}
 	}
 }

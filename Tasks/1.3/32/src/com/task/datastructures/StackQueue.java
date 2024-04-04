@@ -1,3 +1,5 @@
+package com.task.datastructures;
+
 public class StackQueue<Item>
 {
 	private Node<Item> first;
