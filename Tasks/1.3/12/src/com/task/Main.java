@@ -9,7 +9,7 @@ class Main
     public static void main(String[] args)
     {
     	Logger logger = Logger.getLogger(Main.class.getName());
-        Stack<String> stack = new Stack<String>();
+        Stack<String> stack = new Stack<>();
 
         stack.push("1");
         stack.push("4");

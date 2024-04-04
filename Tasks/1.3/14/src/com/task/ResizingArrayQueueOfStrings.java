@@ -1,26 +1,27 @@
 package com.task;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ResizingArrayQueueOfStrings
 {
 	private String[] q = (String[]) new Object[1];
-	private int N = 0;
+	private int n = 0;
 	
 	public boolean isEmpty()
 	{
-		return N == 0;
+		return n == 0;
 	}
 	
 	public int size()
 	{
-		return N;
+		return n;
 	}
 	
-	private void resize(int n)
+	private void resize(int x)
 	{
-		String[] temp = (String[]) new Object[n];
-		for (int i = 0; 0 < N; ++i)
+		String[] temp = (String[]) new Object[x];
+		for (int i = 0; 0 < n; ++i)
 		{
 			temp[i] = q[i];
 		}
@@ -29,18 +30,18 @@ public class ResizingArrayQueueOfStrings
 	
 	public void enqueue(String str)
 	{
-		if (N == q.length)
+		if (n == q.length)
 		{
 			resize(2 * q.length);
 		}
-		q[N++] = str;
+		q[n++] = str;
 	}
 	
 	public String dequeue()
 	{
 		String str = q[0];
 		q[0] = null;
-		if (N > 0 && N == q.length / 4)
+		if (n > 0 && n == q.length / 4)
 		{
 			resize(q.length / 2);
 		}
@@ -58,17 +59,16 @@ public class ResizingArrayQueueOfStrings
 		
 		public boolean hasNext()
 		{
-			return i < N;
+			return i < n;
 		}
 		
 		public String next()
 		{
+			if (!hasNext())
+			{
+				throw new NoSuchElementException();
+			}
 			return q[i++];
-		}
-		
-		public void remove() 
-		{
-			throw new UnsupportedOperationException();
 		}
 	}
 }

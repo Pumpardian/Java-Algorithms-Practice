@@ -1,12 +1,13 @@
 package com.task.datastructures;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public class Queue<Item>
+public class Queue<T>
 {
-	private Node<Item> first;
-	private Node<Item> last;
-	private int N;
+	private Node<T> first;
+	private Node<T> last;
+	private int n;
 	
 	public boolean isEmpty()
 	{
@@ -15,12 +16,12 @@ public class Queue<Item>
 	
 	public int size()
 	{
-		return N;
+		return n;
 	}
 	
-	public void enqueue(Item item)
+	public void enqueue(T item)
 	{
-		Node<Item> _last = last;
+		Node<T> oldLast = last;
 		last = new Node<>(item);
 		last.setNext(null);
 		if (isEmpty())
@@ -29,47 +30,46 @@ public class Queue<Item>
 		}
 		else
 		{
-			_last.setNext(last);
+			oldLast.setNext(last);
 		}
-		++N;
+		++n;
 	}
 	
-	public Item dequeue()
+	public T dequeue()
 	{
-		Item item = first.getItem();
+		T item = first.getItem();
 		first = first.next();
 		if (isEmpty())
 		{
 			last = null;
 		}
-		--N;
+		--n;
 		return item;
 	}
 	
-	public Iterator<Item> iterator()
+	public Iterator<T> iterator()
 	{
 		return new ArrayIterator();
 	}
 	
-	private class ArrayIterator implements Iterator<Item>
+	private class ArrayIterator implements Iterator<T>
 	{
-		private Node<Item> current = first;
+		private Node<T> current = first;
 		
 		public boolean hasNext()
 		{
 			return current != null;
 		}
 		
-		public Item next()
+		public T next()
 		{
-			Item item = current.getItem();
+			if (!hasNext())
+			{
+				throw new NoSuchElementException();
+			}
+			T item = current.getItem();
 			current = current.next();
 			return item;
-		}
-		
-		public void remove() 
-		{
-			throw new UnsupportedOperationException();
 		}
 	}
 }

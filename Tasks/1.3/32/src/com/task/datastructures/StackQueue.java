@@ -1,18 +1,18 @@
 package com.task.datastructures;
 
-public class StackQueue<Item>
+public class StackQueue<T>
 {
-	private Node<Item> first;
-	private Node<Item> last;
+	private Node<T> first;
+	private Node<T> last;
 	
 	public boolean isEmpty()
 	{
 		return first == null;
 	}
 	
-	public void push(Item item)
+	public void push(T item)
 	{
-		Node<Item> node = new Node<>(item);
+		Node<T> node = new Node<>(item);
 		if (isEmpty())
 		{
 			first = node;
@@ -25,13 +25,13 @@ public class StackQueue<Item>
 		}
 	}
 	
-	public Item pop()
+	public T pop()
 	{
 		if (isEmpty())
 		{
 			return null;
 		}
-		Item item = first.getItem();
+		T item = first.getItem();
 		first = first.next();
 		if (first == null)
 		{
@@ -40,9 +40,9 @@ public class StackQueue<Item>
 		return item;
 	}
 	
-	public void append(Item item)
+	public void append(T item)
 	{
-		Node<Item> node = new Node<>(item);
+		Node<T> node = new Node<>(item);
 		if (isEmpty())
 		{
 			first = node;
@@ -54,7 +54,7 @@ public class StackQueue<Item>
 		last = node;
 	}
 	
-	public Item peek()
+	public T peek()
 	{
 		if (isEmpty())
 		{

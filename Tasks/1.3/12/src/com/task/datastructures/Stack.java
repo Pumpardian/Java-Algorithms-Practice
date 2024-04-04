@@ -1,11 +1,12 @@
 package com.task.datastructures;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public class Stack<Item> implements Iterable<Item>
+public class Stack<T> implements Iterable<T>
 {
-	private Node<Item> first;
-	private int N;
+	private Node<T> first;
+	private int n;
 	
 	public boolean isEmpty()
 	{
@@ -14,28 +15,28 @@ public class Stack<Item> implements Iterable<Item>
 	
 	public int size()
 	{
-		return N;
+		return n;
 	}
 	
-	public void push(Item item)
+	public void push(T item)
 	{
-		Node<Item> _first = first;
-		first = new Node<Item>(item);
-		first.setNext(_first);
-		++N;
+		Node<T> oldFirst = first;
+		first = new Node<>(item);
+		first.setNext(oldFirst);
+		++n;
 	}
 	
-	public Item pop()
+	public T pop()
 	{
-		Item item = first.getItem();
+		T item = first.getItem();
 		first = first.next();
-		--N;
+		--n;
 		return item;
 	}
 	
 	public static Stack<String> copy(Stack<String> stack)
 	{
-		Stack<String> copy = new Stack<String>();
+		Stack<String> copy = new Stack<>();
 		for (String s : stack)
 		{
 			copy.push(s);
@@ -43,30 +44,29 @@ public class Stack<Item> implements Iterable<Item>
 		return copy;
 	}
 	
-	public Iterator<Item> iterator()
+	public Iterator<T> iterator()
 	{
 		return new ReverseArrayIterator();
 	}
 	
-	private class ReverseArrayIterator implements Iterator<Item>
+	private class ReverseArrayIterator implements Iterator<T>
 	{
-		private Node<Item> current = first;
+		private Node<T> current = first;
 		
 		public boolean hasNext()
 		{
 			return current != null;
 		}
 		
-		public Item next()
+		public T next()
 		{
-			Item item = current.getItem();
+			if (!hasNext())
+			{
+				throw new NoSuchElementException();
+			}
+			T item = current.getItem();
 			current = current.next();
 			return item;
-		}
-		
-		public void remove() 
-		{
-			throw new UnsupportedOperationException();
 		}
 	}
 }
