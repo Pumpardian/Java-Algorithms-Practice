@@ -1,7 +1,9 @@
-package com.task_1_3_xx.datastructures;
+package com.task_1_3_12.datastructures;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
+import com.task_1_3_xx.dependencies.Node;
 
 public class Stack<T> implements Iterable<T>
 {
