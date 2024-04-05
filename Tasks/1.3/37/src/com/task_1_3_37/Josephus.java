@@ -1,8 +1,7 @@
 package com.task_1_3_37;
 
 import java.util.logging.Logger;
-
-import com.task_1_3_37.datastructures.Queue;
+import com.task_1_3_xx.datastructures.Queue;
 
 public class Josephus 
 {

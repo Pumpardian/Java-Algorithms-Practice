@@ -1,4 +1,4 @@
-package com.task_1_3_37.datastructures;
+package com.task_1_3_xx.datastructures;
 
 public class Node<T>
 {

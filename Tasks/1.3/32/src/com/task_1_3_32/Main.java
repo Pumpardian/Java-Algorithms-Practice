@@ -1,8 +1,7 @@
 package com.task_1_3_32;
 
 import java.util.logging.Logger;
-
-import com.task_1_3_32.datastructures.StackQueue;
+import com.task_1_3_xx.datastructures.StackQueue;
 
 public class Main
 {

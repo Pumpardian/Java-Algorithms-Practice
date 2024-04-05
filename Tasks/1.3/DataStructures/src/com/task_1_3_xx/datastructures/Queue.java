@@ -1,11 +1,12 @@
-package com.task_1_3_12.datastructures;
+package com.task_1_3_xx.datastructures;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Stack<T> implements Iterable<T>
+public class Queue<T>
 {
 	private Node<T> first;
+	private Node<T> last;
 	private int n;
 	
 	public boolean isEmpty()
@@ -18,38 +19,40 @@ public class Stack<T> implements Iterable<T>
 		return n;
 	}
 	
-	public void push(T item)
+	public void enqueue(T item)
 	{
-		Node<T> oldFirst = first;
-		first = new Node<>(item);
-		first.setNext(oldFirst);
+		Node<T> oldLast = last;
+		last = new Node<>(item);
+		last.setNext(null);
+		if (isEmpty())
+		{
+			first = null;
+		}
+		else
+		{
+			oldLast.setNext(last);
+		}
 		++n;
 	}
 	
-	public T pop()
+	public T dequeue()
 	{
 		T item = first.getItem();
 		first = first.next();
+		if (isEmpty())
+		{
+			last = null;
+		}
 		--n;
 		return item;
 	}
 	
-	public static Stack<String> copy(Stack<String> stack)
-	{
-		Stack<String> copy = new Stack<>();
-		for (String s : stack)
-		{
-			copy.push(s);
-		}
-		return copy;
-	}
-	
 	public Iterator<T> iterator()
 	{
-		return new ReverseArrayIterator();
+		return new ArrayIterator();
 	}
 	
-	private class ReverseArrayIterator implements Iterator<T>
+	private class ArrayIterator implements Iterator<T>
 	{
 		private Node<T> current = first;
 		

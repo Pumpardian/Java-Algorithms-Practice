@@ -1,4 +1,4 @@
-package com.task_1_3_32.datastructures;
+package com.task_1_3_xx.datastructures;
 
 public class StackQueue<T>
 {
