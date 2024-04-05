@@ -18,9 +18,9 @@ class Main
 
         Stack<String> copy = Stack.copy(stack);
         
-        logger.info(stack.pop());
-        logger.info(stack.pop());
-        logger.info(String.valueOf(stack.isEmpty()));
+        logger.info(() -> "" + stack.pop());
+        logger.info(() -> "" + stack.pop());
+        logger.info(() -> "" + stack.isEmpty());
         
         for (String e : copy)
         {
