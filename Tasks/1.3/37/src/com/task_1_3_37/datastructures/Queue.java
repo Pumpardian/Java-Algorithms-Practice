@@ -3,9 +3,9 @@ package com.task_1_3_37.datastructures;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import com.task_1_3_xx.dependencies.Node;
+import com.task_x_x_xx.dependencies.Node;
 
-public class Queue<T>
+public class Queue<T> implements Iterable<T>
 {
 	private Node<T> first;
 	private Node<T> last;
