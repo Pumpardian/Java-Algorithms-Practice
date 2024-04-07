@@ -1,15 +1,15 @@
 package com.task_1_3_32.datastructures;
 
-import com.task_1_3_xx.dependencies.Node;
+import com.task_x_x_xx.dependencies.Node;
 
 public class StackQueue<T>
 {
-	private Node<T> first;
-	private Node<T> last;
+	private Node<T> head;
+	private Node<T> tail;
 	
 	public boolean isEmpty()
 	{
-		return first == null;
+		return head == null;
 	}
 	
 	public void push(T item)
@@ -17,13 +17,13 @@ public class StackQueue<T>
 		Node<T> node = new Node<>(item);
 		if (isEmpty())
 		{
-			first = node;
-			last = node;
+			head = node;
+			tail = node;
 		}
 		else
 		{
-			node.setNext(first);
-			first = node;
+			node.setNext(head);
+			head = node;
 		}
 	}
 	
@@ -33,11 +33,11 @@ public class StackQueue<T>
 		{
 			return null;
 		}
-		T item = first.getItem();
-		first = first.next();
-		if (first == null)
+		T item = head.getItem();
+		head = head.next();
+		if (head == null)
 		{
-			last = null;
+			tail = null;
 		}
 		return item;
 	}
@@ -47,13 +47,13 @@ public class StackQueue<T>
 		Node<T> node = new Node<>(item);
 		if (isEmpty())
 		{
-			first = node;
+			head = node;
 		}
 		else
 		{
-			last.setNext(node);
+			tail.setNext(node);
 		}
-		last = node;
+		tail = node;
 	}
 	
 	public T peek()
@@ -62,6 +62,6 @@ public class StackQueue<T>
 		{
 			return null;
 		}
-		return first.getItem();
+		return head.getItem();
 	}
 }

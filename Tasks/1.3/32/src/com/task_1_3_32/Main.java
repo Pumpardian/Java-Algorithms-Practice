@@ -1,5 +1,6 @@
 package com.task_1_3_32;
 
+import java.util.Scanner;
 import java.util.logging.Logger;
 
 import com.task_1_3_32.datastructures.StackQueue;
@@ -9,15 +10,26 @@ public class Main
     public static void main(String[] args)
     {
     	Logger logger = Logger.getLogger(Main.class.getName());
-        StackQueue<Integer> stackQueue = new StackQueue<>();
+        StackQueue<String> stackQueue = new StackQueue<>();
 
-        stackQueue.push(1);
-        stackQueue.push(4);
+        @SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
+        
+        logger.info("Введите элементы стеко-очереди (push) (ctrl + D, чтобы закончить):");
+        while (scanner.hasNextLine()) 
+        {
+        	stackQueue.push(scanner.nextLine());
+        }
+		
 
         logger.info(() -> "" + stackQueue.pop());
 
-        stackQueue.append(3);
-        stackQueue.append(2);
+        
+        logger.info("Введите элементы стеко-очереди (append) (ctrl + D, чтобы закончить):");
+        while (scanner.hasNextLine()) 
+        {
+        	stackQueue.append(scanner.nextLine());
+        }
 
         logger.info(() -> "" + stackQueue.pop());
         logger.info(() -> "" + stackQueue.peek());

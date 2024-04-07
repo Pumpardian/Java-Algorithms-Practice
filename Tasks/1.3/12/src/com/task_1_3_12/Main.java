@@ -1,5 +1,6 @@
 package com.task_1_3_12;
 
+import java.util.Scanner;
 import java.util.logging.Logger;
 import com.task_1_3_12.datastructures.Stack;
 
@@ -10,10 +11,14 @@ class Main
     	Logger logger = Logger.getLogger(Main.class.getName());
         Stack<String> stack = new Stack<>();
 
-        stack.push("1");
-        stack.push("4");
-        stack.push("3");
-        stack.push("2");
+        @SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
+        
+        logger.info("Введите элементы стека (ctrl + D, чтобы закончить):");
+        while (scanner.hasNextLine()) 
+        {
+            stack.push(scanner.nextLine());
+        }
 
         Stack<String> copy = Stack.copy(stack);
         

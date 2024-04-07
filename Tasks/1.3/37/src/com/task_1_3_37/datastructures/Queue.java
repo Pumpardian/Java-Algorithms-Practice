@@ -7,56 +7,74 @@ import com.task_x_x_xx.dependencies.Node;
 
 public class Queue<T> implements Iterable<T>
 {
-	private Node<T> first;
-	private Node<T> last;
-	private int n;
+	private Node<T> head;
+	private Node<T> tail;
+	private int size;
 	
 	public boolean isEmpty()
 	{
-		return first == null;
+		return size == 0;
 	}
 	
 	public int size()
 	{
-		return n;
+		return size;
 	}
 	
 	public void enqueue(T item)
 	{
-		Node<T> oldLast = last;
-		last = new Node<>(item);
-		last.setNext(null);
+        if (item == null) 
+        {
+            throw new IllegalArgumentException();
+        }
+		Node<T> oldLast = tail;
+		tail = new Node<>(item);
+		tail.setNext(null);
 		if (isEmpty())
 		{
-			first = null;
+			head = tail;
 		}
 		else
 		{
-			oldLast.setNext(last);
+			oldLast.setNext(tail);
 		}
-		++n;
+		++size;
 	}
 	
 	public T dequeue()
 	{
-		T item = first.getItem();
-		first = first.next();
+        if (isEmpty()) 
+        {
+            throw new NoSuchElementException();
+        }
+		T item = head.getItem();
+		head = head.next();
+		--size;
 		if (isEmpty())
 		{
-			last = null;
+			tail = null;
 		}
-		--n;
 		return item;
 	}
 	
+    public T peek()
+    {
+        if (isEmpty()) 
+        {
+            throw new NoSuchElementException();
+        }
+
+        return head.getItem();
+    }
+	
 	public Iterator<T> iterator()
 	{
-		return new ArrayIterator();
+		return new QueueIterator();
 	}
 	
-	private class ArrayIterator implements Iterator<T>
+	private class QueueIterator implements Iterator<T>
 	{
-		private Node<T> current = first;
+		private Node<T> current = head;
 		
 		public boolean hasNext()
 		{

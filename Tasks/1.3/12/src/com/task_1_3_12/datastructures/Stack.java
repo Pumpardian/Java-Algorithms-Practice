@@ -3,36 +3,36 @@ package com.task_1_3_12.datastructures;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import com.task_1_3_xx.dependencies.Node;
+import com.task_x_x_xx.dependencies.Node;
 
 public class Stack<T> implements Iterable<T>
 {
-	private Node<T> first;
-	private int n;
+	private Node<T> top;
+	private int size;
 	
 	public boolean isEmpty()
 	{
-		return first == null;
+		return top == null;
 	}
 	
 	public int size()
 	{
-		return n;
+		return size;
 	}
 	
 	public void push(T item)
 	{
-		Node<T> oldFirst = first;
-		first = new Node<>(item);
-		first.setNext(oldFirst);
-		++n;
+		Node<T> oldFirst = top;
+		top = new Node<>(item);
+		top.setNext(oldFirst);
+		++size;
 	}
 	
 	public T pop()
 	{
-		T item = first.getItem();
-		first = first.next();
-		--n;
+		T item = top.getItem();
+		top = top.next();
+		--size;
 		return item;
 	}
 	
@@ -48,12 +48,12 @@ public class Stack<T> implements Iterable<T>
 	
 	public Iterator<T> iterator()
 	{
-		return new ReverseArrayIterator();
+		return new StackIterator();
 	}
 	
-	private class ReverseArrayIterator implements Iterator<T>
+	private class StackIterator implements Iterator<T>
 	{
-		private Node<T> current = first;
+		private Node<T> current = top;
 		
 		public boolean hasNext()
 		{
