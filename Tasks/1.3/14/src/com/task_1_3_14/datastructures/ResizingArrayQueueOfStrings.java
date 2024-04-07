@@ -44,15 +44,13 @@ public class ResizingArrayQueueOfStrings
 		}
 		
 		
-        if (tail == queue.length)
+        if (tail >= queue.length)
         {
             tail = 0;
         }
-        if (tail < queue.length)
-        {
-        	queue[tail++] = str;
-        	++size;
-        }
+        
+    	queue[tail++] = str;
+    	++size;
 	}
 	
     public String dequeue() 
