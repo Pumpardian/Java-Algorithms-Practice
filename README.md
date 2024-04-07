@@ -2,10 +2,10 @@
 ## Sonarcloud: https://sonarcloud.io/project/overview?id=Pumpardian_Java-Algorithms-Practice
 Tasks:
 - [1.3] Контейнеры, очереди, стеки:
-  1.
-  2.
-  3.
-  4.
+  1. Tasks\1.3\12 (Plan: 0.5 | Fact: 0.6)
+  2. Tasks\1.3\14 (Plan: 0.5 | Fact: 0.33)
+  3. Tasks\1.3\32 (Plan: 0.75 | Fact: 0.5)
+  4. Tasks\1.3\37 (Plan: 1 | Fact: 0.67)
 - [2.5] Применение сортировок:
   1.
   2.
