@@ -41,6 +41,10 @@ public class California
     	Input.scan(logger, input);
         String[] candidates = input.toArray(new String[0]);
         int n = candidates.length;
+    	for (int i = 0; i < n; ++i)
+    	{
+    		candidates[i] = candidates[i].toUpperCase();
+    	}
         Arrays.sort(candidates, California.ORDER);
         for (int i = 0; i < n; i++)
         {

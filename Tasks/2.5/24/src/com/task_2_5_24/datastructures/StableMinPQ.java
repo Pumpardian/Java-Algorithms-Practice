@@ -8,7 +8,7 @@ public class StableMinPQ<K extends Comparable<K>>
 	private K[] pq;
 	private long[] time;
 	private int size;
-	private long timestamp = 1;
+	private long timeStamp = 1;
 	
 	public StableMinPQ(int capacity)
 	{
@@ -62,7 +62,7 @@ public class StableMinPQ<K extends Comparable<K>>
 			resize(2 * pq.length);
 		}
 		pq[++size] = x;
-		time[size] = ++timestamp;
+		time[size] = ++timeStamp;
 		swim(size);
 		assert isMinHeap();
 	}
