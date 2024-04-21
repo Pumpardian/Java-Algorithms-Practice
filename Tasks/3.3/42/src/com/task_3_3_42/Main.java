@@ -1,6 +1,6 @@
 package com.task_3_3_42;
 
-import java.util.Random;
+import java.security.SecureRandom;
 import java.util.logging.Logger;
 
 import com.task_3_3_xx.data.RedBlackBST;
@@ -12,9 +12,7 @@ public class Main
 	public static void main(String[] args) 
 	{
 		logger.info("Процесс расчёта может занять некоторое время...");
-		Random random;
-        long seed = System.currentTimeMillis();
-        random = new Random(seed);
+		SecureRandom random = new SecureRandom();
         
         int[] treeSizes = {10000, 100000, 1000000};
         int numberOfExperiments = 100;

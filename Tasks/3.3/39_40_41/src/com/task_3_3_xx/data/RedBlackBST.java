@@ -66,21 +66,7 @@ public class RedBlackBST<K extends Comparable<K>, V>
 			this.color = color;
 		}
     }
-
-    protected boolean isRed(Node node)
-    {
-    	if (node == null)
-    	{
-    		return false;
-    	}
-    	return node.isColor() == RED;
-    }
     
-    public boolean isEmpty()
-    {
-        return getRoot() == null;
-    }
-
     public int size()
     {
         return size(getRoot());
@@ -96,6 +82,20 @@ public class RedBlackBST<K extends Comparable<K>, V>
     	{
     		return node.size;
     	}
+    }
+
+    protected boolean isRed(Node node)
+    {
+    	if (node == null)
+    	{
+    		return false;
+    	}
+    	return node.isColor() == RED;
+    }
+    
+    public boolean isEmpty()
+    {
+        return getRoot() == null;
     }
 
     public boolean contains(K key)
