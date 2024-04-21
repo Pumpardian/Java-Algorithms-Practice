@@ -54,22 +54,22 @@ public class TestRedBlackBST
 			 st.put(keys[i], i);
 		 }
 
+		 logger.info(() -> "Удаление наименьших" + st.size() / 2 + " ключей");
 		 for (int i = 0; i < st.size() / 2; i++)
 		 {
 			 st.deleteMin();
 		 }
-		 logger.info(() -> "После удаления наименьших" + st.size() / 2 + " ключей");
 		 for (String s : st.keys())
 		 {
 			 logger.info(() -> s + " " + st.get(s));
 		 }
 		 logger.info("");
 
+		 logger.info("Удаление оставшихся ключей");
 		 while (!st.isEmpty())
 		 {
 			 st.delete(st.select(st.size() / 2));
 		 }
-		 logger.info("После удаления оставшихся ключей");
 		 for (String s : st.keys())
 		 {
 			 logger.info(() -> s + " " + st.get(s));

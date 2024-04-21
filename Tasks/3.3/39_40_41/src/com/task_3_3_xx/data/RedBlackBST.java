@@ -517,67 +517,7 @@ public class RedBlackBST<K extends Comparable<K>, V>
         }
         return ceiling(node.getRight(), key);
     }
-
-    public K select(int rank)
-    {
-        if (rank < 0 || rank >= size())
-        {
-            throw new IllegalArgumentException();
-        }
-        return select(getRoot(), rank);
-    }
-
-    private K select(Node node, int rank)
-    {
-        if (node == null)
-    	{
-    		return null;
-    	}
-        int leftSize = size(node.getLeft());
-        if (leftSize > rank)
-    	{
-    		return select(node.getLeft(),  rank);
-    	}
-        else if (leftSize < rank)
-    	{
-    		return select(node.getRight(), rank - leftSize - 1);
-    	}
-        else 
-    	{
-    		return node.getKey();
-    	}
-    }
-
-    public int rank(K key)
-    {
-        if (key == null)
-        {
-        	throw new IllegalArgumentException();
-        }
-        return rank(key, getRoot());
-    }
-
-    private int rank(K key, Node node)
-    {
-        if (node == null)
-    	{
-    		return 0;
-    	}
-        int cmp = key.compareTo(node.getKey());
-        if (cmp < 0)
-        {
-        	return rank(key, node.getLeft());
-		}
-        else if (cmp > 0) 
-    	{
-    		return 1 + size(node.getLeft()) + rank(key, node.getRight());
-    	}
-        else
-    	{
-    		return size(node.getLeft());
-    	}
-    }
-
+    
     public Iterable<K> keys()
     {
         if (isEmpty())
@@ -625,6 +565,36 @@ public class RedBlackBST<K extends Comparable<K>, V>
     	}
     }
 
+    public K select(int rank)
+    {
+        if (rank < 0 || rank >= size())
+        {
+            throw new IllegalArgumentException();
+        }
+        return select(getRoot(), rank);
+    }
+
+    private K select(Node node, int rank)
+    {
+        if (node == null)
+    	{
+    		return null;
+    	}
+        int leftSize = size(node.getLeft());
+        if (leftSize > rank)
+    	{
+    		return select(node.getLeft(),  rank);
+    	}
+        else if (leftSize < rank)
+    	{
+    		return select(node.getRight(), rank - leftSize - 1);
+    	}
+        else 
+    	{
+    		return node.getKey();
+    	}
+    }
+    
     public int size(K lo, K hi)
     {
         if (lo == null)
@@ -647,6 +617,36 @@ public class RedBlackBST<K extends Comparable<K>, V>
         else   
     	{
     		return rank(hi) - rank(lo);
+    	}
+    }
+
+    public int rank(K key)
+    {
+        if (key == null)
+        {
+        	throw new IllegalArgumentException();
+        }
+        return rank(key, getRoot());
+    }
+
+    private int rank(K key, Node node)
+    {
+        if (node == null)
+    	{
+    		return 0;
+    	}
+        int cmp = key.compareTo(node.getKey());
+        if (cmp < 0)
+        {
+        	return rank(key, node.getLeft());
+		}
+        else if (cmp > 0) 
+    	{
+    		return 1 + size(node.getLeft()) + rank(key, node.getRight());
+    	}
+        else
+    	{
+    		return size(node.getLeft());
     	}
     }
 
