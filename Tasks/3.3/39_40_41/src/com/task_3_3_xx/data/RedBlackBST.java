@@ -518,28 +518,6 @@ public class RedBlackBST<K extends Comparable<K>, V>
         return ceiling(node.getRight(), key);
     }
     
-    private void keys(Node node, Queue<K> queue, K lo, K hi)
-    {
-        if (node == null)
-    	{
-    		return;
-    	}
-        int cmplo = lo.compareTo(node.getKey());
-        int cmphi = hi.compareTo(node.getKey());
-        if (cmplo < 0)
-    	{
-    		keys(node.getLeft(), queue, lo, hi);
-    	}
-        if (cmplo <= 0 && cmphi >= 0)
-    	{
-    		queue.enqueue(node.getKey());
-    	}
-        if (cmphi > 0)
-    	{
-    		keys(node.getRight(), queue, lo, hi);
-    	}
-    }
-    
     public Iterable<K> keys()
     {
         if (isEmpty())
@@ -551,20 +529,38 @@ public class RedBlackBST<K extends Comparable<K>, V>
 
     public Iterable<K> keys(K lo, K hi)
     {
-        if (lo == null)
+        if (lo == null || hi == null)
     	{
     		throw new IllegalArgumentException();
     	}
-        if (hi == null)
-    	{
-    		throw new IllegalArgumentException();
-    	}
-
+        
         Queue<K> queue = new Queue<>();
         keys(getRoot(), queue, lo, hi);
         return queue;
     }
-    
+
+    private void keys(Node node, Queue<K> queue, K lo, K hi)
+    {
+        if (node == null)
+    	{
+    		return;
+    	}
+        int cmphi = hi.compareTo(node.getKey());
+        int cmplo = lo.compareTo(node.getKey());
+        if (cmplo < 0)
+    	{
+    		keys(node.getLeft(), queue, lo, hi);
+    	}
+        if (cmphi > 0)
+    	{
+    		keys(node.getRight(), queue, lo, hi);
+    	}
+        if (cmplo <= 0 && cmphi >= 0)
+    	{
+    		queue.enqueue(node.getKey());
+    	}
+    }
+
     public K select(int rank)
     {
         if (rank < 0 || rank >= size())
@@ -597,11 +593,7 @@ public class RedBlackBST<K extends Comparable<K>, V>
     
     public int size(K lo, K hi)
     {
-        if (lo == null)
-    	{
-    		throw new IllegalArgumentException();
-    	}
-        if (hi == null)
+        if (lo == null || hi == null)
     	{
     		throw new IllegalArgumentException();
     	}
@@ -610,13 +602,13 @@ public class RedBlackBST<K extends Comparable<K>, V>
     	{
     		return 0;
     	}
-        if (contains(hi))
+        if (!contains(hi))
     	{
-    		return rank(hi) - rank(lo) + 1;
+    		return rank(hi) - rank(lo);
     	}
         else   
     	{
-    		return rank(hi) - rank(lo);
+    		return rank(hi) - rank(lo) + 1;
     	}
     }
 
@@ -669,7 +661,7 @@ public class RedBlackBST<K extends Comparable<K>, V>
 		return root;
 	}
 
-	public void setRoot(Node root)
+	public void setRoot(Node root) 
 	{
 		this.root = root;
 	}
