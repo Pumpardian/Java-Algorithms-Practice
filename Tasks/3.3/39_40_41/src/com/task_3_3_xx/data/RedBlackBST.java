@@ -518,6 +518,28 @@ public class RedBlackBST<K extends Comparable<K>, V>
         return ceiling(node.getRight(), key);
     }
     
+    private void keys(Node node, Queue<K> queue, K lo, K hi)
+    {
+        if (node == null)
+    	{
+    		return;
+    	}
+        int cmplo = lo.compareTo(node.getKey());
+        int cmphi = hi.compareTo(node.getKey());
+        if (cmplo < 0)
+    	{
+    		keys(node.getLeft(), queue, lo, hi);
+    	}
+        if (cmplo <= 0 && cmphi >= 0)
+    	{
+    		queue.enqueue(node.getKey());
+    	}
+        if (cmphi > 0)
+    	{
+    		keys(node.getRight(), queue, lo, hi);
+    	}
+    }
+    
     public Iterable<K> keys()
     {
         if (isEmpty())
@@ -542,29 +564,7 @@ public class RedBlackBST<K extends Comparable<K>, V>
         keys(getRoot(), queue, lo, hi);
         return queue;
     }
-
-    private void keys(Node node, Queue<K> queue, K lo, K hi)
-    {
-        if (node == null)
-    	{
-    		return;
-    	}
-        int cmplo = lo.compareTo(node.getKey());
-        int cmphi = hi.compareTo(node.getKey());
-        if (cmplo < 0)
-    	{
-    		keys(node.getLeft(), queue, lo, hi);
-    	}
-        if (cmplo <= 0 && cmphi >= 0)
-    	{
-    		queue.enqueue(node.getKey());
-    	}
-        if (cmphi > 0)
-    	{
-    		keys(node.getRight(), queue, lo, hi);
-    	}
-    }
-
+    
     public K select(int rank)
     {
         if (rank < 0 || rank >= size())
@@ -664,11 +664,13 @@ public class RedBlackBST<K extends Comparable<K>, V>
         return 1 + Math.max(height(node.getLeft()), height(node.getRight()));
     }
 
-	public Node getRoot() {
+	public Node getRoot()
+	{
 		return root;
 	}
 
-	public void setRoot(Node root) {
+	public void setRoot(Node root)
+	{
 		this.root = root;
 	}
     
