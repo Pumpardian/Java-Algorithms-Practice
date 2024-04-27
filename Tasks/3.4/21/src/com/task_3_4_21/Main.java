@@ -1,6 +1,6 @@
 package com.task_3_4_21;
 
-import java.util.Random;
+import java.security.SecureRandom;
 import java.util.logging.Logger;
 
 import com.task_3_4_21.data.LinearProbingHashTableAvgSearchMissCost;
@@ -14,7 +14,7 @@ public class Main
 
         for (int i = 0; i < 500000; i++) 
         {
-        	Random random = new Random();
+        	SecureRandom random = new SecureRandom();
             int randomKey = random.nextInt(Integer.MAX_VALUE);
             linearProbingHashTableAvgSearchMissCost.put(randomKey, randomKey);
         }
