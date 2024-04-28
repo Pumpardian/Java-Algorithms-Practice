@@ -37,9 +37,21 @@ public class Main
 	public static void main(String[] args) 
     {
     	Logger logger = Logger.getLogger(Main.class.getName());
-        logger.info("Введите n (большие числа могут привести к нехватке памяти)");
-    	Scanner scanner = new Scanner(System.in);
-    	int n = scanner.nextInt();
+		Scanner scanner = new Scanner(System.in);
+        logger.info("Введите n");
+		int n;
+    	while (true)
+    	{	
+    		n = scanner.nextInt();
+    		if (n > 20)
+    		{
+    	        logger.info("Вы ввели слишком большое число, повторите ввод (n <= 20)"); 		
+    		}
+    		else
+    		{
+    			break;
+    		}
+    	}
         List<String> hashAttackInput = generateStringsInput(n);
 
         for (String string : hashAttackInput) 
