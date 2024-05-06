@@ -13,18 +13,6 @@ public class BoyerMooreSearch extends BoyerMoore
         super(pattern);
     }
     
-    public int count(String text)
-    {
-        int count = 0;
-        int occurrenceIndex = searchFromIndex(text, 0);
-        while (occurrenceIndex != text.length())
-        {
-            ++count;
-            occurrenceIndex = searchFromIndex(text, occurrenceIndex + 1);
-        }
-        return count;
-    }
-    
     public void searchAll(String text) 
     {
         int occurrenceIndex = searchFromIndex(text, 0);
@@ -39,6 +27,18 @@ public class BoyerMooreSearch extends BoyerMoore
         	logger.info(() -> "Шаблон найден по индексу " + x);
             occurrenceIndex = searchFromIndex(text, occurrenceIndex + 1);
         }
+    }
+	
+	public int count(String text)
+    {
+        int count = 0;
+        int occurrenceIndex = searchFromIndex(text, 0);
+        while (occurrenceIndex != text.length())
+        {
+            ++count;
+            occurrenceIndex = searchFromIndex(text, occurrenceIndex + 1);
+        }
+        return count;
     }
     
     protected int searchFromIndex(String text, int textStartIndex)
