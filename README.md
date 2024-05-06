@@ -32,15 +32,15 @@ Tasks:
   3. Tasks\5.1\14 (Plan: 1 | Fact: 1)
   4. Tasks\5.1\18 (Plan: 0.7 | Fact: 0.45)
 - [5.2] Trie-деревья:
-  1.
-  2.
-  3.
-  4.
+  1. Tasks\5.2\9 (Plan: 0.7 | Fact: 1.3)
+  2. Tasks\5.2\14 (Plan: 0.4 | Fact: 0.3)
+  3. Tasks\5.2\17 (Plan: 0.5 | Fact: 1)
+  4. Tasks\5.2\20 (Plan: 0.5 | Fact: 0.4)
 - [5.3] Поиск подстрок:
-  1.
-  2.
-  3.
-  4.
+  1. Tasks\5.3\9 (Plan: 0.5 | Fact: 0.5)
+  2. Tasks\5.3\10 (Plan: 0.5 | Fact: 0.5)
+  3. Tasks\5.3\26 (Plan: 0.6 | Fact: 0.3)
+  4. Tasks\5.3\27 (Plan: 0.7 | Fact: 0.7)
 - [5.4] Регулярные выражения:
   1.
   2.
