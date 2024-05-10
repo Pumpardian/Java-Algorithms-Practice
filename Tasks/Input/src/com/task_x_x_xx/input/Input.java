@@ -1,5 +1,9 @@
 package com.task_x_x_xx.input;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
@@ -37,4 +41,37 @@ public class Input
 		}
 		return scanner.useDelimiter(Pattern.compile("\\A")).next();
 	}
+	
+    public static String[] getAllStringsFromFile(String filePath)
+    {
+        List<String> lines;
+
+        try
+        {
+            lines = Files.readAllLines(Paths.get(filePath));
+        }
+        catch (IOException e) 
+        {
+            return new String[0];
+        }
+
+        List<String> wordsList = new ArrayList<>();
+
+        for (String line : lines) 
+        {
+            String[] wordsInCurrentLine = line.split(" ");
+            for (String wordInCurrentLine : wordsInCurrentLine) 
+            {
+                if (wordInCurrentLine.equals("")) 
+                {
+                    continue;
+                }
+                wordsList.add(wordInCurrentLine);
+            }
+        }
+        String[] words = new String[wordsList.size()] ;
+        wordsList.toArray(words);
+
+        return words;
+    }
 }
