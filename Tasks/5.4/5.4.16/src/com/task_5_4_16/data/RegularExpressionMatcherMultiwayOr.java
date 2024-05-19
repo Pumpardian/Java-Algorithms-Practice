@@ -15,7 +15,6 @@ public class RegularExpressionMatcherMultiwayOr extends RegularExpressionMatcher
         Stack<Integer> operators = new Stack<>();
         regularExpression = regularExpressionString.toCharArray();
         numberOfStates = regularExpression.length;
-
         digraph = new Digraph(numberOfStates + 1);
 
         for (int i = 0; i < numberOfStates; ++i) 

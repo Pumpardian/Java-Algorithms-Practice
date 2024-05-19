@@ -10,12 +10,11 @@ public class RegularExpressionMatcherOneOrMore extends RegularExpressionMatcher
     public RegularExpressionMatcherOneOrMore(String regularExpressionString)
     {
         super(regularExpressionString);
-
-        Stack<Integer> operators = new Stack<>();
+        
         regularExpression = regularExpressionString.toCharArray();
         numberOfStates = regularExpression.length;
-
         digraph = new Digraph(numberOfStates + 1);
+        Stack<Integer> operators = new Stack<>();
 
         for (int i = 0; i < numberOfStates; ++i)
         {
