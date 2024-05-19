@@ -42,7 +42,7 @@ Tasks:
   3. Tasks\5.3\26 (Plan: 0.6 | Fact: 0.3)
   4. Tasks\5.3\27 (Plan: 0.7 | Fact: 0.7)
 - [5.4] Регулярные выражения:
-  1.
-  2.
-  3.
-  4.
+  1. Tasks\5.4\7 (Plan: 1 | Fact: 1.85)
+  2. Tasks\5.4\16 (Plan: 1 | Fact: 1.35)
+  3. Tasks\5.4\17 (Plan: 1 | Fact: 1.45)
+  4. Tasks\5.4\18 (Plan: 1 | Fact: 1.4)

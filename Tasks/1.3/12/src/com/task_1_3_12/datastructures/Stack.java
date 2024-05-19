@@ -71,4 +71,14 @@ public class Stack<T> implements Iterable<T>
 			return item;
 		}
 	}
+
+    public T peek() 
+    {
+        if (isEmpty()) 
+        {
+            return null;
+        }
+
+        return top.getItem();
+    }
 }
