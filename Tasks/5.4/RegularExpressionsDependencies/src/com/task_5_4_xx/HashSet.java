@@ -133,11 +133,6 @@ public class HashSet<T>
             return keysSize;
         }
 
-        public boolean isEmpty() 
-        {
-            return keysSize == 0;
-        }
-
         private int hash(K key)
         {
             int hash = key.hashCode() & 0x7fffffff;
@@ -152,6 +147,11 @@ public class HashSet<T>
         private double getLoadFactor() 
         {
             return ((double) keysSize) / (double) size;
+        }
+
+        public boolean isEmpty() 
+        {
+            return keysSize == 0;
         }
 
         public boolean contains(K key) 

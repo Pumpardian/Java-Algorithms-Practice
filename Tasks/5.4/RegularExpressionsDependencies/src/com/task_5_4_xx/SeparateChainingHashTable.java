@@ -133,11 +133,6 @@ public class SeparateChainingHashTable<K, V>
         lgM = (int) (Math.log(size) / Math.log(2));
     }
 
-    public int size() 
-    {
-        return keysSize;
-    }
-
     public boolean isEmpty() 
     {
         return keysSize == 0;
@@ -154,8 +149,14 @@ public class SeparateChainingHashTable<K, V>
         return hash % size;
     }
 
-    protected double getLoadFactor() {
+    protected double getLoadFactor() 
+    {
         return ((double) keysSize) / (double) size;
+    }
+
+    public int size() 
+    {
+        return keysSize;
     }
 
     public boolean contains(K key)
